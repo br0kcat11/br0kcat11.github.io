@@ -10,8 +10,12 @@ class GameOfLife {
     }
 
     createGrid() {
-        return Array(this.rows).fill().map(() => 
-            Array(this.cols).fill().map(() => Math.random() < 0.1)
+        return Array(this.rows).fill().map((_, row) => 
+            Array(this.cols).fill().map((_, col) => {
+                const isInRedZone = col > this.cols * 0.8 && row < this.rows * 0.3;
+                // Augmenter légèrement la densité dans la zone rouge
+                return Math.random() < (isInRedZone ? 0.15 : 0.1);
+            })
         );
     }
 
@@ -67,8 +71,16 @@ class GameOfLife {
         const y = row * this.cellSize;
         const size = this.cellSize - 1;
 
-        this.ctx.fillStyle = 'rgba(74, 78, 130, 0.8)';
-        this.ctx.strokeStyle = 'rgba(74, 78, 130, 0.8)';
+        // Zone rouge dans le coin supérieur droit
+        const isInRedZone = col > this.cols * 0.8 && row < this.rows * 0.3;
+        
+        if (isInRedZone) {
+            this.ctx.fillStyle = 'rgba(255, 50, 50, 0.8)';
+            this.ctx.strokeStyle = 'rgba(255, 50, 50, 0.8)';
+        } else {
+            this.ctx.fillStyle = 'rgba(74, 78, 130, 0.8)';
+            this.ctx.strokeStyle = 'rgba(74, 78, 130, 0.8)';
+        }
         this.ctx.lineWidth = 1;
 
         switch(type) {
