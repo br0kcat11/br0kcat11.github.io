@@ -1,184 +1,244 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site en Construction</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #001219;
-            color: white;
-        }
-
-        .container {
-            text-align: center;
-            z-index: 1;
-            padding: 20px;
-        }
-
-        .elementor-heading-title {
-            font-size: 2.5em;
-            margin: 0;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-        }
-
-        @media (max-width: 768px) {
-            .elementor-heading-title {  
-                font-size: 1.8em;
-                padding: 15px;
-            }
-        }
-    </style>
+    <title>Portfolio Cybersécurité</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/carousel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <script>
-        // Code du Game of Life ici
-        class GameOfLife {
-            constructor(canvas) {
-                this.canvas = canvas;
-                this.ctx = canvas.getContext('2d');
-                this.cellSize = 8;
-                this.rows = Math.floor(canvas.height / this.cellSize);
-                this.cols = Math.floor(canvas.width / this.cellSize);
-                this.grid = this.createGrid();
-                this.nextGrid = this.createGrid();
-            }
+    <nav>
+        <div class="nav-content">
+            <div class="logo">
+                <a href="#accueil" style="color: #ffffff !important;">Br0kc4t11</a>
+            </div>
+            <div class="nav-links">
+                <a href="#about">À Propos</a>
+                <a href="#projects">Mes Projets</a>
+                <a href="#courses">Cours</a>
+                <a href="#ctf">CTF & WriteUp</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-            createGrid() {
-                return Array(this.rows).fill().map((_, row) => 
-                    Array(this.cols).fill().map((_, col) => {
-                        const isInRedZone = col > this.cols * 0.8 && row < this.rows * 0.3;
-                        return Math.random() < (isInRedZone ? 0.15 : 0.1);
-                    })
-                );
-            }
+    <header id="accueil">
+        <div class="header-content">
+            <h1>Lucas PLANCKE</h1>
+            <p>Étudiant passionné par la cyberdéfense 🇫🇷</p>
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </header>
 
-            getNeighbors(row, col) {
-                let count = 0;
-                for (let i = -1; i <= 1; i++) {
-                    for (let j = -1; j <= 1; j++) {
-                        if (i === 0 && j === 0) continue;
-                        const newRow = (row + i + this.rows) % this.rows;
-                        const newCol = (col + j + this.cols) % this.cols;
-                        if (this.grid[newRow][newCol]) count++;
-                    }
-                }
-                return count;
-            }
+    <section id="about">
+        <h2>À Propos</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Passionné par la cybersécurité défensive, je me forme en autodidacte pour enrichir continuellement mes compétences.
+                   Je mets en pratique mes connaissances à travers des challenges sur des plateformes comme RootMe et CyberDefenders, ce qui me permet d'explorer divers outils et d'affiner ma méthodologie d'analyse et de résolution de défis.</p>
+            </div>
+        </div>
+    </section>
 
-            update() {
-                for (let row = 0; row < this.rows; row++) {
-                    for (let col = 0; col < this.cols; col++) {
-                        const neighbors = this.getNeighbors(row, col);
-                        const cell = this.grid[row][col];
 
-                        if (cell && (neighbors < 2 || neighbors > 3)) {
-                            this.nextGrid[row][col] = false;
-                        } else if (!cell && neighbors === 3) {
-                            this.nextGrid[row][col] = true;
-                        } else {
-                            this.nextGrid[row][col] = cell;
-                        }
-                    }
-                }
+    <section id="projects">
+        <h2>Mes Projets</h2>
+        <div class="projects-grid">
+            <div class="card">
+                <h3>Automatisation de la détection d'un SOC</h3>
+                <p>Détection proactive du ransomware CashCat avec Wazuh, Sysmon, VirusTotal et TheHive pour une analyse approfondie
+                    via un workflow automatisé et des alertes email/SMS</p>
+                    <div class="skill-tags">
+                        <span>Wazuh</span>
+                        <span>Sysmon</span>
+                        <span>VirusTotal</span>
+                        <span>TheHive</span>
+                        <span>Shuffle SOAR</span>
+                    </div>
+                <div class="card-meta">
+                    <span>Python • TensorFlow</span>
+                    <a href="#">GitHub <i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Deep Learning</h3>
+                <p>Reconnaissance du niveau de maturation d'une tomate depuis une photo grace au Deep Learning</p>
+                <div class="card-meta">
+                    <span>Python • Docker</span>
+                    <a href="#">GitHub <i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Forensics Tool</h3>
+                <p>Outil d'analyse forensique pour systèmes Linux avec génération de rapports détaillés.</p>
+                <div class="card-meta">
+                    <span>Python • Bash</span>
+                    <a href="#">GitHub <i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                [this.grid, this.nextGrid] = [this.nextGrid, this.grid];
-            }
+    <section id="courses">
+        <h2>Cours</h2>
+        <div class="courses-content">
+            <div class="carousel">
+                <div class="card">
+                    <h3>Detection Engineering Path</h3>
+                    <p>Maîtrise des outils et techniques de détection et réponse aux menaces.</p>
+                    <div class="skill-tags">
+                        <span>Threat Detection</span>
+                        <span>Incident Response</span>
+                        <span>Advanced Log Analysis</span>
+                    </div>
+                    <div class="card-meta">
+                        <span>60 heures</span>
+                        <span>Note: 18/20</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Malware Analysis Skill Path</h3>
+                    <p>Analyse et compréhension du malware : exécution, détection, décompilation, trafic.</p>
+                    <div class="skill-tags">
+                        <span>Malware Analysis</span>
+                        <span>Network Traffic Monitoring</span>
+                        <span>Code Deobfuscation</span>
+                    </div>
+                    <div class="card-meta">
+                        <span>45 heures</span>
+                        <span>Note: 16/20</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>SIEM Engineer Career Path</h3>
+                    <p>Maîtrise des SIEM : installation, configuration, analyse des logs, alertes.</p>
+                    <div class="skill-tags">
+                        <span>SIEM</span>
+                        <span>Splunk</span>
+                        <span>Wazuh</span>
+                    </div>
+                    <div class="card-meta">
+                        <span>50 heures</span>
+                        <span>Note: 17/20</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Cyber Threat Intelligence 101</h3>
+                    <p>ChatGPT said:
 
-            draw() {
-                this.ctx.fillStyle = 'rgba(0, 18, 25, 0.95)';
-                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+Introduction aux concepts de base du renseignement sur les menaces cyber, incluant acteurs, vecteurs, cycle du renseignement, aspects juridiques</p>
+                    <div class="skill-tags">
+                        <span>Threat Actor & Vector Identification</span>
+                        <span>Intelligence Lifecycle Understanding</span>
+                        <span>Legal & Ethical Awareness</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Blue Team Junior Analyst</h3>
+                    <p>Introduction à l'OSINT, gestion des vulnérabilités, dark web, chasse aux menaces et l'analyse de trames réseau</p>
+                    <div class="skill-tags">
+                        <span>OSINT</span>
+                        <span>Dark Web</span>
+                        <span>Vulnerability Management</span>
+                        <span>Threat Hunting</span>
+                        <span>Network Analysis</span>
+                        <span>Forensic</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Junior Penetration Tester</h3>
+                    <p>Acquisition des compétences essentielles pour tester la sécurité des applications web et infrastructures.</p>
+                    <div class="skill-tags">
+                        <span>Web hacking</span>
+                        <span>Burp Suite</span>
+                        <span>Network Security</span>
+                        <span>Metasploit</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>SOC Level 2</h3>
+                    <p>Développement de compétences en analyse de logs, détection des menaces, chasse aux menaces et gestion des incidents.</p>
+                    <div class="skill-tags">
+                        <span>Splunk</span>
+                        <span>Elastic Stack</span>
+                        <span>Threat Hunting</span>
+                        <span>Incident Response</span>
+                        <span>Malware Analysis</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>SOC Analyst Learning Path</h3>
+                    <p>Développement de compétences en détection des menaces, réponse aux incidents, gestion des vulnérabilités </p>
+                    <div class="skill-tags">
+                        <span>Threat Detection</span>
+                        <span>Incident Management</span>
+                        <span>Log Analysis</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>SOC Level 1</h3>
+                    <p>Renforcement des compétences en surveillance, gestion des alertes, configuration des outils de sécurité et escalade des incidents en SOC.</p>
+                    <div class="skill-tags">
+                        <span>CTI</span>
+                        <span>Network Security</span>
+                        <span>Endpoint Security</span>
+                        <span>SIEM</span>
+                        <span>Forensics</span>
+                        <span>Incident Response</span>
+                        <span>Phishing</span>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-dots"></div>
+        </div>
+    </section>
 
-                for (let row = 0; row < this.rows; row++) {
-                    for (let col = 0; col < this.cols; col++) {
-                        if (this.grid[row][col]) {
-                            const type = (row + col) % 3;
-                            this.drawCell(row, col, type);
-                        }
-                    }
-                }
-            }
+    <section id="ctf">
+        <h2>CTF & WriteUp</h2>
+        <div class="ctf-grid">
+            <div class="card">
+                <h3>CyberDefenders</h3>
+                <p>Résolution de challenges en Network & Endpoint Forensic ainsi qu'en Threat Intel. Participation active sur la plateforme</p>
+                <div class="card-meta">
+                    <span>Top 50/1000+</span>
+                    <a href="#">WriteUp <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Root-Me </h3>
+                <p>15 challenges résolus en Réseau et Forensic</p>
+                <div class="card-meta">
+                    <span>50+ Challenges</span>
+                    <a href="#">Profil <i class="fas fa-user"></i></a>
+                </div>
+            </div>
+            <div class="card">
+                <h3>WriteUp - CTF</h3>
+                <p>Publication des WriteUp des challenges en CTFs publiées prochainement</p>
+                <div class="card-meta">
+                    <span>Advanced</span>
+                    <a href="#">WriteUp <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            drawCell(row, col, type) {
-                const x = col * this.cellSize;
-                const y = row * this.cellSize;
-                const size = this.cellSize - 1;
+    <footer>
+        <p>&copy; 2025 Portfolio Cybersécurité. Tous droits réservés.</p>
+    </footer>
 
-                const isInRedZone = col > this.cols * 0.8 && row < this.rows * 0.3;
-                
-                if (isInRedZone) {
-                    this.ctx.fillStyle = 'rgba(255, 50, 50, 0.8)';
-                    this.ctx.strokeStyle = 'rgba(255, 50, 50, 0.8)';
-                } else {
-                    this.ctx.fillStyle = 'rgba(74, 78, 130, 0.8)';
-                    this.ctx.strokeStyle = 'rgba(74, 78, 130, 0.8)';
-                }
-                this.ctx.lineWidth = 1;
-
-                switch(type) {
-                    case 0:
-                        this.ctx.fillRect(x, y, size, size);
-                        break;
-                    case 1:
-                        this.ctx.beginPath();
-                        this.ctx.moveTo(x, y + size/2);
-                        this.ctx.lineTo(x + size, y + size/2);
-                        this.ctx.moveTo(x + size/2, y);
-                        this.ctx.lineTo(x + size/2, y + size);
-                        this.ctx.stroke();
-                        break;
-                    case 2:
-                        const margin = size * 0.25;
-                        this.ctx.fillRect(x + margin, y + margin, size - margin*2, size - margin*2);
-                        break;
-                }
-            }
-        }
-
-        function initGameOfLife() {
-            const canvas = document.createElement('canvas');
-            canvas.style.position = 'fixed';
-            canvas.style.top = '0';
-            canvas.style.left = '0';
-            canvas.style.width = '100%';
-            canvas.style.height = '100%';
-            canvas.style.zIndex = '-1';
-            canvas.style.pointerEvents = 'none';
-            document.body.prepend(canvas);
-
-            const ctx = canvas.getContext('2d');
-
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-
-            window.addEventListener('resize', resizeCanvas);
-            resizeCanvas();
-
-            const game = new GameOfLife(canvas);
-
-            function animate() {
-                game.update();
-                game.draw();
-                setTimeout(() => requestAnimationFrame(animate), 100);
-            }
-
-            animate();
-        }
-
-        document.addEventListener('DOMContentLoaded', initGameOfLife);
-    </script>
+    <script src="js/main.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/particles.js"></script>
 </body>
 </html>
